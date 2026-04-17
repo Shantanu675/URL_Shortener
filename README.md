@@ -105,8 +105,9 @@ Expected behavior:
 
     First 10 requests: HTTP 302
     Remaining requests: HTTP 429
+---
 
-### Design Decisions
+## Design Decisions
 - Redis is used to reduce database load and improve response time
 - Random Base62 codes ensure compact and URL-friendly identifiers
 - Cache-first strategy improves scalability under high traffic
