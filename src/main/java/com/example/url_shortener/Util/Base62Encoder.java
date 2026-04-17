@@ -21,10 +21,9 @@ public class Base62Encoder {
         return sb.reverse().toString();
     }
 
-    // ✅ ADD THIS METHOD
     public static String generateRandomCode(){
 
-        int length = 6; // you can change (6–8 recommended)
+        int length = 6;
         StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < length; i++){
