@@ -1,0 +1,6 @@
+DB_URL=jdbc:mysql://localhost:3306/urlshortener
+DB_USERNAME=root
+DB_PASSWORD=password
+
+REDIS_HOST=localhost
+REDIS_PORT=6379
