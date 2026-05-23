@@ -81,32 +81,39 @@ Response:
 - Prevents abuse and protects backend resources
 
 ### Running the Project (Docker)
-- Step 1: Build the application
+- Step 1: Load .env manually
 ```json
-"mvn clean package"
+export $(grep -v '^#' .env | xargs)
 ```
 
-- Step 2: Start containers
+- Step 2: Build the application
 ```json
-"docker compose up --build"
+mvn spring-boot:run
 ```
-- Step 3: Access application
+
+- Step 3: Start containers
 ```json
-"http://localhost:8080"
+docker compose up --build
 ```
+- Step 4: Access application
+```json
+http://localhost:8080
+```
+
 - Testing Rate Limiting
 
     Run the following command in terminal:
 ```json
-"for i in {1..15}; do curl -I http://localhost:8080/{shortCode}; done"
+for i in {1..15}; do curl -I http://localhost:8080/{shortCode}; done
 ```
 
 Expected behavior:
 
     First 10 requests: HTTP 302
     Remaining requests: HTTP 429
+---
 
-### Design Decisions
+## Design Decisions
 - Redis is used to reduce database load and improve response time
 - Random Base62 codes ensure compact and URL-friendly identifiers
 - Cache-first strategy improves scalability under high traffic
